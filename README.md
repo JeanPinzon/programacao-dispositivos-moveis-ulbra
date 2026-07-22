@@ -4,11 +4,11 @@ Código-fonte progressivo da disciplina **Programação para Dispositivos Móvei
 
 O mesmo aplicativo cresce a cada módulo. Cada etapa vive em uma **branch** própria, para você acompanhar exatamente o que muda de uma aula para a outra.
 
-## Você está na branch: `modulo-4`
+## Você está na branch: `modulo-5`
 
-**Sensores e APIs do aparelho.** O menu ganha dois destinos novos: **Localização** (`ui/screens/LocalizacaoScreen.kt`), que pede a permissão em tempo de execução e mostra latitude/longitude via serviço de localização fundida; e **Acelerômetro** (`ui/screens/SensorScreen.kt`), que lê o sensor com `DisposableEffect`, registrando e liberando o ouvinte conforme o ciclo de vida. As permissões estão declaradas no `AndroidManifest.xml`.
+**Estado e persistência de dados.** Dois destinos novos no menu: **Lista de tarefas** (`ui/screens/TarefasScreen.kt` + pacote `data/`), com persistência em banco **Room**, `ViewModel` e lista reativa (`Flow`); e **Consulta de CEP** (`ui/screens/CepScreen.kt` + `data/ViaCep.kt`), consumindo a API pública ViaCEP com **Retrofit**, tratando os três estados (carregando, sucesso, erro).
 
-> A localização funciona melhor em um **celular físico**. No emulador, defina uma posição nos controles estendidos.
+> Prova da persistência: adicione tarefas, **feche o app por completo** e reabra. As tarefas continuam lá. A consulta de CEP exige internet.
 
 ## Como rodar
 
