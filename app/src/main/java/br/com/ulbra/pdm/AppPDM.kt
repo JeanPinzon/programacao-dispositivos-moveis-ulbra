@@ -17,7 +17,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import br.com.ulbra.pdm.ui.screens.LocalizacaoScreen
 import br.com.ulbra.pdm.ui.screens.PerfilScreen
+import br.com.ulbra.pdm.ui.screens.SensorScreen
 
 /**
  * Um destino do menu principal. A cada modulo, novas telas sao acrescentadas
@@ -26,7 +28,9 @@ import br.com.ulbra.pdm.ui.screens.PerfilScreen
 data class Destino(val rota: String, val titulo: String, val descricao: String)
 
 val destinos = listOf(
-    Destino("perfil", "Cartão de perfil", "Módulo 3: componentes, layout e navegação")
+    Destino("perfil", "Cartão de perfil", "Módulo 3: componentes, layout e navegação"),
+    Destino("localizacao", "Localização", "Módulo 4: permissões e GPS"),
+    Destino("sensor", "Acelerômetro", "Módulo 4: leitura de sensores")
 )
 
 /**
@@ -43,6 +47,12 @@ fun AppPDM() {
         }
         composable("perfil") {
             PerfilScreen(onBack = { navController.popBackStack() })
+        }
+        composable("localizacao") {
+            LocalizacaoScreen(onBack = { navController.popBackStack() })
+        }
+        composable("sensor") {
+            SensorScreen(onBack = { navController.popBackStack() })
         }
     }
 }

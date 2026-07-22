@@ -49,5 +49,7 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended")
     // Modulo 3: navegacao entre telas
     implementation("androidx.navigation:navigation-compose:2.8.0")
+    // Modulo 4: localizacao (servico de localizacao fundida)
+    implementation("com.google.android.gms:play-services-location:21.3.0")
     debugImplementation("androidx.compose.ui:ui-tooling")
 }

@@ -4,11 +4,11 @@ Código-fonte progressivo da disciplina **Programação para Dispositivos Móvei
 
 O mesmo aplicativo cresce a cada módulo. Cada etapa vive em uma **branch** própria, para você acompanhar exatamente o que muda de uma aula para a outra.
 
-## Você está na branch: `modulo-3`
+## Você está na branch: `modulo-4`
 
-**Interfaces com Jetpack Compose.** O app ganha uma casca de navegação (`AppPDM.kt`) com uma tela inicial em forma de **menu**, que vai crescer a cada módulo. O primeiro destino é o **cartão de perfil** (`ui/screens/PerfilScreen.kt`), demonstrando componentes, layout (`Row`/`Column`), `Modifier` e Material Design. Os logs de ciclo de vida do Módulo 2 continuam ativos.
+**Sensores e APIs do aparelho.** O menu ganha dois destinos novos: **Localização** (`ui/screens/LocalizacaoScreen.kt`), que pede a permissão em tempo de execução e mostra latitude/longitude via serviço de localização fundida; e **Acelerômetro** (`ui/screens/SensorScreen.kt`), que lê o sensor com `DisposableEffect`, registrando e liberando o ouvinte conforme o ciclo de vida. As permissões estão declaradas no `AndroidManifest.xml`.
 
-Arquivos: `app/src/main/java/br/com/ulbra/pdm/AppPDM.kt` e `ui/screens/PerfilScreen.kt`
+> A localização funciona melhor em um **celular físico**. No emulador, defina uma posição nos controles estendidos.
 
 ## Como rodar
 
