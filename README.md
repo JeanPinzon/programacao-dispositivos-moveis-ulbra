@@ -4,11 +4,11 @@ Código-fonte progressivo da disciplina **Programação para Dispositivos Móvei
 
 O mesmo aplicativo cresce a cada módulo. Cada etapa vive em uma **branch** própria, para você acompanhar exatamente o que muda de uma aula para a outra.
 
-## Você está na branch: `modulo-2`
+## Você está na branch: `modulo-3`
 
-**Aplicações nativas e ciclo de vida.** A `MainActivity` sobrescreve os seis callbacks do ciclo de vida (`onCreate`, `onStart`, `onResume`, `onPause`, `onStop`, `onDestroy`) e registra cada um no **Logcat** com a etiqueta `CICLO`. Rode o app, abra o Logcat, filtre por `CICLO` e gire a tela para ver a Activity ser destruída e recriada.
+**Interfaces com Jetpack Compose.** O app ganha uma casca de navegação (`AppPDM.kt`) com uma tela inicial em forma de **menu**, que vai crescer a cada módulo. O primeiro destino é o **cartão de perfil** (`ui/screens/PerfilScreen.kt`), demonstrando componentes, layout (`Row`/`Column`), `Modifier` e Material Design. Os logs de ciclo de vida do Módulo 2 continuam ativos.
 
-Arquivo principal: `app/src/main/java/br/com/ulbra/pdm/MainActivity.kt`
+Arquivos: `app/src/main/java/br/com/ulbra/pdm/AppPDM.kt` e `ui/screens/PerfilScreen.kt`
 
 ## Como rodar
 
