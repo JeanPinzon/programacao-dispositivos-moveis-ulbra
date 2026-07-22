@@ -12,7 +12,9 @@ Arquivo principal: `app/src/main/java/br/com/ulbra/pdm/MainActivity.kt`
 
 ## Como rodar
 
-1. Instale o **Android Studio** (veja o guia de setup do Módulo 1). Link: https://developer.android.com/studio
+1. Instale o **Android Studio**. A Google mantém um guia oficial passo a passo, em português e com imagens de cada tela:
+   https://developer.android.com/codelabs/basic-android-kotlin-compose-install-android-studio?hl=pt-br
+   (download direto: https://developer.android.com/studio)
 2. Clone o repositório e abra a pasta no Android Studio:
    ```bash
    git clone https://github.com/JeanPinzon/programacao-dispositivos-moveis-ulbra.git
