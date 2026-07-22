@@ -4,20 +4,11 @@ Código-fonte progressivo da disciplina **Programação para Dispositivos Móvei
 
 O mesmo aplicativo cresce a cada módulo. Cada etapa vive em uma **branch** própria, para você acompanhar exatamente o que muda de uma aula para a outra.
 
-## Você está na branch: `modulo-6`
+## Você está na branch: `main`
 
-**Publicação e distribuição.** Configuração de **release** no `app/build.gradle.kts`: `versionCode`/`versionName`, minificação (R8) e assinatura por `signingConfig` que lê as credenciais de um `keystore.properties` (fora do Git). Há um teste de unidade (`app/src/test/...CalculadoraTest.kt`) e a tela **Sobre**, que mostra a versão via `BuildConfig`.
+Esta é a branch de referência: contém o **app final** (todos os módulos reunidos) e este guia. Para estudar a evolução aula a aula, troque para a branch do módulo correspondente (tabela abaixo).
 
-### Gerar uma versão assinada (AAB)
-
-1. Crie a sua chave: **Build > Generate Signed App Bundle / APK**, opção *Android App Bundle*, e em *Key store path* clique em **Create new**. Guarde o arquivo `.jks` e as senhas com segurança.
-2. Para assinar pela linha de comando, copie `keystore.properties.example` para `keystore.properties`, preencha os dados e rode:
-   ```bash
-   ./gradlew bundleRelease
-   ```
-3. Rodar os testes: `./gradlew test`
-
-> A perda da keystore impede publicar atualizações do app. Faça backup dela.
+O app é um **menu** onde cada módulo acrescenta uma tela: cartão de perfil, localização, acelerômetro, lista de tarefas (Room), consulta de CEP (Retrofit) e a tela Sobre.
 
 ## Como rodar
 
