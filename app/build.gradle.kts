@@ -1,8 +1,19 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
     id("com.google.devtools.ksp")
+}
+
+// Modulo 6: le as credenciais de assinatura de um arquivo keystore.properties
+// (que NAO vai para o Git). Sem ele, o app ainda compila e roda em debug.
+val keystorePropsFile = rootProject.file("keystore.properties")
+val temKeystore = keystorePropsFile.exists()
+val keystoreProps = Properties().apply {
+    if (temKeystore) load(FileInputStream(keystorePropsFile))
 }
 
 android {
@@ -13,17 +24,31 @@ android {
         applicationId = "br.com.ulbra.pdm"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 1          // inteiro que SEMPRE cresce a cada envio a loja
+        versionName = "1.0.0"    // nome visivel ao usuario (versionamento semantico)
+    }
+
+    signingConfigs {
+        if (temKeystore) {
+            create("release") {
+                storeFile = file(keystoreProps.getProperty("storeFile"))
+                storePassword = keystoreProps.getProperty("storePassword")
+                keyAlias = keystoreProps.getProperty("keyAlias")
+                keyPassword = keystoreProps.getProperty("keyPassword")
+            }
+        }
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true   // remove codigo nao utilizado e ofusca (R8)
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            if (temKeystore) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
     compileOptions {
@@ -35,6 +60,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -60,4 +86,6 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     debugImplementation("androidx.compose.ui:ui-tooling")
+    // Modulo 6: testes de unidade
+    testImplementation("junit:junit:4.13.2")
 }

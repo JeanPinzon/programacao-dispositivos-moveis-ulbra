@@ -21,6 +21,7 @@ import br.com.ulbra.pdm.ui.screens.CepScreen
 import br.com.ulbra.pdm.ui.screens.LocalizacaoScreen
 import br.com.ulbra.pdm.ui.screens.PerfilScreen
 import br.com.ulbra.pdm.ui.screens.SensorScreen
+import br.com.ulbra.pdm.ui.screens.SobreScreen
 import br.com.ulbra.pdm.ui.screens.TarefasScreen
 
 /**
@@ -34,7 +35,8 @@ val destinos = listOf(
     Destino("localizacao", "Localização", "Módulo 4: permissões e GPS"),
     Destino("sensor", "Acelerômetro", "Módulo 4: leitura de sensores"),
     Destino("tarefas", "Lista de tarefas", "Módulo 5: persistência com Room"),
-    Destino("cep", "Consulta de CEP", "Módulo 5: API REST com Retrofit")
+    Destino("cep", "Consulta de CEP", "Módulo 5: API REST com Retrofit"),
+    Destino("sobre", "Sobre", "Módulo 6: versão e publicação")
 )
 
 /**
@@ -63,6 +65,9 @@ fun AppPDM() {
         }
         composable("cep") {
             CepScreen(onBack = { navController.popBackStack() })
+        }
+        composable("sobre") {
+            SobreScreen(onBack = { navController.popBackStack() })
         }
     }
 }

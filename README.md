@@ -4,11 +4,20 @@ Código-fonte progressivo da disciplina **Programação para Dispositivos Móvei
 
 O mesmo aplicativo cresce a cada módulo. Cada etapa vive em uma **branch** própria, para você acompanhar exatamente o que muda de uma aula para a outra.
 
-## Você está na branch: `modulo-5`
+## Você está na branch: `modulo-6`
 
-**Estado e persistência de dados.** Dois destinos novos no menu: **Lista de tarefas** (`ui/screens/TarefasScreen.kt` + pacote `data/`), com persistência em banco **Room**, `ViewModel` e lista reativa (`Flow`); e **Consulta de CEP** (`ui/screens/CepScreen.kt` + `data/ViaCep.kt`), consumindo a API pública ViaCEP com **Retrofit**, tratando os três estados (carregando, sucesso, erro).
+**Publicação e distribuição.** Configuração de **release** no `app/build.gradle.kts`: `versionCode`/`versionName`, minificação (R8) e assinatura por `signingConfig` que lê as credenciais de um `keystore.properties` (fora do Git). Há um teste de unidade (`app/src/test/...CalculadoraTest.kt`) e a tela **Sobre**, que mostra a versão via `BuildConfig`.
 
-> Prova da persistência: adicione tarefas, **feche o app por completo** e reabra. As tarefas continuam lá. A consulta de CEP exige internet.
+### Gerar uma versão assinada (AAB)
+
+1. Crie a sua chave: **Build > Generate Signed App Bundle / APK**, opção *Android App Bundle*, e em *Key store path* clique em **Create new**. Guarde o arquivo `.jks` e as senhas com segurança.
+2. Para assinar pela linha de comando, copie `keystore.properties.example` para `keystore.properties`, preencha os dados e rode:
+   ```bash
+   ./gradlew bundleRelease
+   ```
+3. Rodar os testes: `./gradlew test`
+
+> A perda da keystore impede publicar atualizações do app. Faça backup dela.
 
 ## Como rodar
 
