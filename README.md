@@ -6,7 +6,7 @@ O mesmo aplicativo cresce a cada módulo. Cada etapa vive em uma **branch** pró
 
 ## Você está na branch: `main`
 
-Esta é a **branch de partida**: um projeto Android limpo, com um "Hello World" e nada mais. Ela serve de ponto de entrada e de guia (este texto).
+Esta é a **branch de partida**: um projeto Android limpo, sem nenhum conteúdo das aulas. Ela serve de ponto de entrada e de guia (este texto).
 
 O conteúdo da disciplina está nas branches dos módulos. Troque para a branch da aula que você quer estudar, conforme a tabela abaixo. O mesmo aplicativo vai crescendo a cada módulo, ganhando telas e recursos novos.
 
@@ -36,7 +36,7 @@ O conteúdo da disciplina está nas branches dos módulos. Troque para a branch 
 | `modulo-4` | Sensores e APIs | Permissões, localização (GPS) e acelerômetro |
 | `modulo-5` | Estado e persistência | Lista de tarefas com Room e consulta a API REST |
 | `modulo-6` | Publicação | Configuração de release, assinatura e teste |
-| `main` | Ponto de partida | Projeto limpo com "Hello World" + este guia |
+| `main` | Ponto de partida | Projeto Android limpo + este guia |
 
 > Dica: para ver **o que mudou** entre duas aulas, use por exemplo
 > `git diff modulo-2 modulo-3`.

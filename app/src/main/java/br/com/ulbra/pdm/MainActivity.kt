@@ -13,6 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.ulbra.pdm.ui.theme.PDMUlbraTheme
 
+/**
+ * Projeto base da disciplina: um app Android limpo, sem nenhum conteudo das aulas.
+ *
+ * O conteudo de cada modulo esta nas branches modulo-1 a modulo-6.
+ * Comece pela branch modulo-1: git checkout modulo-1
+ */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,10 +26,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PDMUlbraTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Saudacao(
-                        nome = "Jean",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    TelaInicial(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -31,17 +34,17 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Saudacao(nome: String, modifier: Modifier = Modifier) {
+fun TelaInicial(modifier: Modifier = Modifier) {
     Text(
-        text = "Olá, $nome! Este é o meu primeiro app em Programação para Dispositivos Móveis.",
+        text = "Projeto base da disciplina. Troque para a branch do módulo que quer estudar.",
         modifier = modifier
     )
 }
 
 @Preview(showBackground = true)
 @Composable
-fun SaudacaoPreview() {
+fun TelaInicialPreview() {
     PDMUlbraTheme {
-        Saudacao("Ulbra")
+        TelaInicial()
     }
 }
