@@ -23,7 +23,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 
 /**
- * Modulo 4: le o acelerometro. O ouvinte e registrado quando a tela aparece e
+ * Modulo 4: le o acelerometro. O listener e registrado quando a tela aparece e
  * cancelado quando ela some (onDispose do DisposableEffect), respeitando o
  * ciclo de vida para nao desperdicar bateria.
  */
@@ -36,7 +36,7 @@ fun SensorScreen(onBack: () -> Unit) {
         val gerenciador = contexto.getSystemService(Context.SENSOR_SERVICE) as SensorManager
         val acelerometro = gerenciador.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
-        val ouvinte = object : SensorEventListener {
+        val listener = object : SensorEventListener {
             override fun onSensorChanged(evento: SensorEvent) {
                 val x = evento.values[0]
                 val y = evento.values[1]
@@ -47,8 +47,8 @@ fun SensorScreen(onBack: () -> Unit) {
             override fun onAccuracyChanged(sensor: Sensor?, precisao: Int) {}
         }
 
-        gerenciador.registerListener(ouvinte, acelerometro, SensorManager.SENSOR_DELAY_UI)
-        onDispose { gerenciador.unregisterListener(ouvinte) }
+        gerenciador.registerListener(listener, acelerometro, SensorManager.SENSOR_DELAY_UI)
+        onDispose { gerenciador.unregisterListener(listener) }
     }
 
     Column(
