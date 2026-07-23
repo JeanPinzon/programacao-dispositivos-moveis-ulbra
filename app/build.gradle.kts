@@ -81,6 +81,7 @@ dependencies {
     // Modulo 5: ViewModel no Compose, Room (banco local) e Retrofit (API REST)
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
     implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("androidx.room:room-ktx:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
