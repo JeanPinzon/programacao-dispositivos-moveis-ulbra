@@ -1,19 +1,7 @@
-import java.io.FileInputStream
-import java.util.Properties
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
-    id("com.google.devtools.ksp")
-}
-
-// Modulo 6: le as credenciais de assinatura de um arquivo keystore.properties
-// (que NAO vai para o Git). Sem ele, o app ainda compila e roda em debug.
-val keystorePropsFile = rootProject.file("keystore.properties")
-val temKeystore = keystorePropsFile.exists()
-val keystoreProps = Properties().apply {
-    if (temKeystore) load(FileInputStream(keystorePropsFile))
 }
 
 android {
@@ -24,31 +12,17 @@ android {
         applicationId = "br.com.ulbra.pdm"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1          // inteiro que SEMPRE cresce a cada envio a loja
-        versionName = "1.0.0"    // nome visivel ao usuario (versionamento semantico)
-    }
-
-    signingConfigs {
-        if (temKeystore) {
-            create("release") {
-                storeFile = file(keystoreProps.getProperty("storeFile"))
-                storePassword = keystoreProps.getProperty("storePassword")
-                keyAlias = keystoreProps.getProperty("keyAlias")
-                keyPassword = keystoreProps.getProperty("keyPassword")
-            }
-        }
+        versionCode = 1
+        versionName = "1.0"
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = true   // remove codigo nao utilizado e ofusca (R8)
+            isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            if (temKeystore) {
-                signingConfig = signingConfigs.getByName("release")
-            }
         }
     }
     compileOptions {
@@ -60,7 +34,6 @@ android {
     }
     buildFeatures {
         compose = true
-        buildConfig = true
     }
 }
 
@@ -73,20 +46,5 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.material:material-icons-extended")
-    // Modulo 3: navegacao entre telas
-    implementation("androidx.navigation:navigation-compose:2.8.0")
-    // Modulo 4: localizacao (servico de localizacao fundida)
-    implementation("com.google.android.gms:play-services-location:21.3.0")
-    // Modulo 5: ViewModel no Compose, Room (banco local) e Retrofit (API REST)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.datastore:datastore-preferences:1.1.1")
-    implementation("androidx.room:room-ktx:2.6.1")
-    ksp("androidx.room:room-compiler:2.6.1")
-    implementation("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     debugImplementation("androidx.compose.ui:ui-tooling")
-    // Modulo 6: testes de unidade
-    testImplementation("junit:junit:4.13.2")
 }

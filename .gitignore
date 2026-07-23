@@ -9,7 +9,3 @@
 .cxx
 local.properties
 app/build/
-# Modulo 6: credenciais de assinatura nunca vao para o Git
-keystore.properties
-*.jks
-*.keystore

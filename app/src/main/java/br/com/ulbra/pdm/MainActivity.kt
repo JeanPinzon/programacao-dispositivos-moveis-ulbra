@@ -1,57 +1,47 @@
 package br.com.ulbra.pdm
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import br.com.ulbra.pdm.ui.theme.PDMUlbraTheme
 
-/**
- * Ponto de entrada do aplicativo.
- *
- * Modulo 2: os seis callbacks do ciclo de vida registram no Logcat (etiqueta CICLO).
- * Modulo 3 em diante: o conteudo e a casca de navegacao AppPDM(), cujo menu
- * cresce a cada modulo.
- */
 class MainActivity : ComponentActivity() {
-
-    private val tag = "CICLO"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(tag, "onCreate: a tela foi criada")
         enableEdgeToEdge()
         setContent {
             PDMUlbraTheme {
-                AppPDM()
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Saudacao(
+                        nome = "Jean",
+                        modifier = Modifier.padding(innerPadding)
+                    )
+                }
             }
         }
     }
+}
 
-    override fun onStart() {
-        super.onStart()
-        Log.d(tag, "onStart: a tela ficou visivel")
-    }
+@Composable
+fun Saudacao(nome: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Olá, $nome! Este é o meu primeiro app em Programação para Dispositivos Móveis.",
+        modifier = modifier
+    )
+}
 
-    override fun onResume() {
-        super.onResume()
-        Log.d(tag, "onResume: a tela esta em primeiro plano")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(tag, "onPause: a tela perdeu o foco")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(tag, "onStop: a tela deixou de ser visivel")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(tag, "onDestroy: a tela foi destruida")
+@Preview(showBackground = true)
+@Composable
+fun SaudacaoPreview() {
+    PDMUlbraTheme {
+        Saudacao("Ulbra")
     }
 }
