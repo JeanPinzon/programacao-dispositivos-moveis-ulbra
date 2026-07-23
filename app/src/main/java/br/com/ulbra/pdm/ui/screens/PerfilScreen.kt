@@ -38,7 +38,7 @@ fun PerfilScreen(onBack: () -> Unit) {
     ) {
         Text("Cartão de perfil", style = MaterialTheme.typography.headlineSmall)
         CartaoPerfil(
-            nome = "Ana Souza",
+            nome = "Camila",
             curso = "Análise e Desenvolvimento de Sistemas"
         )
         Button(onClick = onBack) {
@@ -79,6 +79,6 @@ fun CartaoPerfil(nome: String, curso: String) {
 @Composable
 fun CartaoPerfilPreview() {
     PDMUlbraTheme {
-        CartaoPerfil(nome = "Ana Souza", curso = "Análise e Desenvolvimento de Sistemas")
+        CartaoPerfil(nome = "Pandora", curso = "Análise e Desenvolvimento de Sistemas")
     }
 }
