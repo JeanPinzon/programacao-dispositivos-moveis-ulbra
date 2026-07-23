@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             PDMUlbraTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Saudacao(
-                        nome = "sou o Jean, Programação para Dispositivos Móveis",
+                        nome = "Jean",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -32,7 +32,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Saudacao(nome: String, modifier: Modifier = Modifier) {
-    Text(text = "Olá, $nome!", modifier = modifier)
+    Text(
+        text = "Olá, $nome! Este é o meu primeiro app em Programação para Dispositivos Móveis.",
+        modifier = modifier
+    )
 }
 
 @Preview(showBackground = true)
